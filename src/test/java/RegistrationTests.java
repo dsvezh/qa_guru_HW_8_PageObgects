@@ -1,11 +1,7 @@
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationTests extends TestBase {
@@ -24,28 +20,22 @@ public class RegistrationTests extends TestBase {
                         .setLastName("Ivanov")
                         .setEmail("ivan@ivanov.com")
                         .setGender("Male")
-                        .setUserNumber("88005553535");
+                        .setUserNumber("88005553535")
+                        .setDateOfBirth("02", "May", "1997")
+                        .setHomeAddress("Home_Address")
+                        .setSubjects("English")
+                        .setHobbies("Sports")
+                        .setPicture("img/1.png")
+                        .setState("NCR")
+                        .setCity("Delhi")
+                        .clickSubmit();
 
 
-//        $("#firstName").setValue("Alex");
-//        $("#lastName").setValue(userLastName);
-//        $("#userEmail").setValue("email@mail.com");
-//        $("#userNumber").setValue("88005553535");
-//        $("#currentAddress").setValue("Home_Address");
-//        $("#gender-radio-1").parent().click();
 
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("May");
-        $(".react-datepicker__year-select").selectOption("1997");
-        $(".react-datepicker__day--002:not(.react-datepicker__day--outside-month)").click();
-        $("#subjectsInput").setValue("English").pressEnter();
-        $("#hobbies-checkbox-1").parent().click();
-        $("#uploadPicture").uploadFromClasspath("img/1.png");
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Delhi")).click();
-        $("#submit").click();
+
+
+
+
 
 //        $(".modal-dialog").should(appear);
 //        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
