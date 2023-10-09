@@ -5,8 +5,7 @@ import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
 
@@ -122,5 +121,10 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage openPage() {
+        open("/automation-practice-form");
+
+        return this;
+    }
 }
 

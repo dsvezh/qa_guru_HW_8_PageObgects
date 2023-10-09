@@ -12,9 +12,9 @@ public class RegistrationTests extends TestBase {
     @Test
     void successfullRegistrationTest() {
 
-        open("https://demoqa.com/automation-practice-form");
 
-        registrationPage.removeFooterBanner()
+        registrationPage.openPage()
+                        .removeFooterBanner()
                         .checkHeadline("Student Registration Form")
                         .setFirstName("Ivan")
                         .setLastName("Ivanov")

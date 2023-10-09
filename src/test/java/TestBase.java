@@ -5,7 +5,8 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.holdBrowserOpen = true;
+//        Configuration.holdBrowserOpen = true;
         Configuration.pageLoadStrategy = "eager";
+        Configuration.baseUrl = "https://demoqa.com";
     }
 }
