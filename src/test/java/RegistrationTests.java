@@ -1,22 +1,22 @@
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import pages.components.ResaltTableModal;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    ResaltTableModal resaltTableModal = new ResaltTableModal();
 
     @Test
     void successfullRegistrationTest() {
 
         open("https://demoqa.com/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
 
-        registrationPage.setFirstName("Ivan")
+        registrationPage.removeFooterBanner()
+                        .checkHeadline("Student Registration Form")
+                        .setFirstName("Ivan")
                         .setLastName("Ivanov")
                         .setEmail("ivan@ivanov.com")
                         .setGender("Male")
@@ -32,16 +32,19 @@ public class RegistrationTests extends TestBase {
 
 
 
+        resaltTableModal.checkResultTableAppear()
+                        .checkTitleTable("Thanks for submitting the form")
+                        .checkResult("Student Name", "Ivan Ivanov")
+                        .checkResult("Student Email", "ivan@ivanov.com")
+                        .checkResult("Mobile", "8800555353")
+                        .checkResult("Date of Birth", "02 May,1997")
+                        .checkResult("Subjects", "English")
+                        .checkResult("Hobbies", "Sports")
+                        .checkResult("Picture", "1.png")
+                        .checkResult("Address", "Home_Address")
+                        .checkResult("State and City", "NCR Delhi");
 
 
-
-
-
-//        $(".modal-dialog").should(appear);
-//        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-//        $(".table-responsive").shouldHave(text(userLastName), text(userFirstName), text("email@mail.com"),
-//                text("Male"), text("8800555353"), text("English"), text("02 May,1997"),
-//                text("Home_Address"), text("NCR Delhi"));
 
     }
 }

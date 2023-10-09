@@ -3,13 +3,16 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
 
     ////////// SelenideElements
-    SelenideElement firstNameInput = $("#firstName"),
+    SelenideElement headline = $(".practice-form-wrapper"),
+                    firstNameInput = $("#firstName"),
                     lastNameInput = $("#lastName"),
                     genderWrapper = $("#genterWrapper"),
                     userNumberInput = $("#userNumber"),
@@ -24,6 +27,20 @@ public class RegistrationPage {
 
 
     ////////// Actions
+
+    public RegistrationPage checkHeadline (String value) {
+        headline.shouldHave(text(value));
+
+        return this;
+    }
+
+    public RegistrationPage removeFooterBanner () {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
+        return this;
+    }
+
     public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
 
