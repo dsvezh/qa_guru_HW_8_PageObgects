@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.ResaltTableModal;
 
-import static com.codeborne.selenide.Selenide.*;
+
 
 public class RegistrationTests extends TestBase {
 
