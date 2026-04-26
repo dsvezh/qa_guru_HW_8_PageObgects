@@ -33,9 +33,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage removeFooterBanner () {
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+    public RegistrationPage removeFooterBanner() {
+        executeJavaScript("document.querySelector('#fixedban')?.remove()");
+        executeJavaScript("document.querySelector('footer')?.remove()");
 
         return this;
     }
